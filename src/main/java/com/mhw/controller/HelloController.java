@@ -17,7 +17,7 @@ public class HelloController {
     //private static final Logger log = LoggerFactory.getLogger(HelloController.class);
     @RequestMapping("/hello")
     public Article hello(){
-        Article article = new Article(1L, "mhw");
+//        Article article = new Article(1L, "mhw");
         Article article1 = Article.builder().id(2L).author("mhw").build();
         log.info("测试一下" + article1);
         return article1;
