@@ -1,6 +1,6 @@
-package com.mhw.service;
+package com.mhw.bootlaunch.service;
 
-import com.mhw.model.Article;
+import com.mhw.bootlaunch.model.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

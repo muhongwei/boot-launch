@@ -1,6 +1,6 @@
-package com.mhw.controller;
+package com.mhw.bootlaunch.controller;
 
-import com.mhw.model.Article;
+import com.mhw.bootlaunch.model.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

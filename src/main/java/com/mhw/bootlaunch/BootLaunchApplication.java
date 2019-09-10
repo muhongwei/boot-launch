@@ -1,4 +1,4 @@
-package com.mhw;
+package com.mhw.bootlaunch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

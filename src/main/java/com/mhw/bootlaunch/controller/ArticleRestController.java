@@ -1,8 +1,9 @@
-package com.mhw.controller;
+package com.mhw.bootlaunch.controller;
 
-import com.mhw.model.AjaxResponse;
-import com.mhw.model.Article;
-import com.mhw.service.ArticleRestService;
+import com.mhw.bootlaunch.model.AjaxResponse;
+import com.mhw.bootlaunch.model.Article;
+import com.mhw.bootlaunch.service.ArticleRestService;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,12 @@ public class ArticleRestController {
     @Resource
     private ArticleRestService articleRestService;
 
- 
+    @ApiOperation(value = "添加文章", notes = "添加新的文章", tags = "Article",httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code=200,message="成功",response=AjaxResponse.class),
+            @ApiResponse(code=400,message="用户输入错误",response=AjaxResponse.class),
+            @ApiResponse(code=500,message="系统内部错误",response=AjaxResponse.class)
+    })
     //@RequestMapping(value = "/article", method = POST, produces = "application/json")
     @PostMapping("/article")
     public @ResponseBody
@@ -27,11 +33,16 @@ public class ArticleRestController {
                                                    @RequestParam String  author) {*/
 
         log.info("saveArticle：{}",article);
-        articleRestService.saveArticle(article);
+        log.info("articleRestService return :" + articleRestService.saveArticle(article));
 
         return  AjaxResponse.success(article);
     }
- 
+    @ApiOperation(value = "删除文章", notes = "删除文章", tags = "Article",httpMethod = "DELETE")
+    @ApiResponses({
+            @ApiResponse(code=200,message="成功",response=AjaxResponse.class),
+            @ApiResponse(code=400,message="用户输入错误",response=AjaxResponse.class),
+            @ApiResponse(code=500,message="系统内部错误",response=AjaxResponse.class)
+    })
     //@RequestMapping(value = "/article/{id}", method = DELETE, produces = "application/json")
     @DeleteMapping("/article/{id}")
     public @ResponseBody AjaxResponse deleteArticle(@PathVariable Long id) {

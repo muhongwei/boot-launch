@@ -1,4 +1,4 @@
-package com.mhw.model;
+package com.mhw.bootlaunch.model;
 
 import lombok.Data;
 
