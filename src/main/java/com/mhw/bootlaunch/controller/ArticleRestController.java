@@ -33,7 +33,7 @@ public class ArticleRestController {
                                                    @RequestParam String  author) {*/
 
         log.info("saveArticle：{}",article);
-        log.info("articleRestService return :" + articleRestService.saveArticle(article));
+        //log.info("articleRestService return :" + articleRestService.saveArticle(article));
 
         return  AjaxResponse.success(article);
     }
