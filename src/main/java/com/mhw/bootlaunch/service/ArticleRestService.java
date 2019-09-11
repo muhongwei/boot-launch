@@ -1,17 +1,18 @@
 package com.mhw.bootlaunch.service;
 
 import com.mhw.bootlaunch.model.Article;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
-@Slf4j
-@Service
-public class ArticleRestService {
+import java.util.List;
 
-    public String saveArticle( Article article) {
+public interface ArticleRestService {
 
-        log.info("saveArticle：{}",article);
+    Article saveArticle(Article article);
 
-        return  "测试";
-    }
+    void deleteArticle(Long id);
+
+    void updateArticle(Article article);
+
+    Article getArticle(Long id);
+
+    List<Article> getAll();
 }

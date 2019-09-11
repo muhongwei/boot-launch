@@ -2,6 +2,7 @@ package com.mhw.bootlaunch.controller;
 
 import com.mhw.bootlaunch.model.AjaxResponse;
 import com.mhw.bootlaunch.model.Article;
+import com.mhw.bootlaunch.service.ArticleRestJDBCServiceImpl;
 import com.mhw.bootlaunch.service.ArticleRestService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,9 @@ public class ArticleRestController {
 
         log.info("saveArticle：{}",article);
         //log.info("articleRestService return :" + articleRestService.saveArticle(article));
+        Article at = articleRestService.saveArticle(article);
 
-        return  AjaxResponse.success(article);
+        return  AjaxResponse.success(at);
     }
     @ApiOperation(value = "删除文章", notes = "删除文章", tags = "Article",httpMethod = "DELETE")
     @ApiResponses({
@@ -48,6 +50,7 @@ public class ArticleRestController {
     public @ResponseBody AjaxResponse deleteArticle(@PathVariable Long id) {
 
         log.info("deleteArticle：{}",id);
+        articleRestService.deleteArticle(id);
 
         return AjaxResponse.success(id);
     }
@@ -59,14 +62,18 @@ public class ArticleRestController {
 
         log.info("updateArticle：{}",article);
 
+        articleRestService.updateArticle(article);
         return AjaxResponse.success(article);
     }
  
     //@RequestMapping(value = "/article/{id}", method = GET, produces = "application/json")
     @GetMapping( "/article/{id}")
     public @ResponseBody  AjaxResponse getArticle(@PathVariable Long id) {
+        return AjaxResponse.success(articleRestService.getArticle(id));
+    }
 
-        Article article1 = Article.builder().id(1L).author("zimug").content("spring boot 2.深入浅出").createTime(new Date()).title("t1").build();
-        return AjaxResponse.success(article1);
+    @GetMapping( "/article")
+    public @ResponseBody  AjaxResponse getAllArticle() {
+        return AjaxResponse.success(articleRestService.getAll());
     }
 }

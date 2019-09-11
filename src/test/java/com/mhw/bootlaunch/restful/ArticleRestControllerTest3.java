@@ -3,7 +3,7 @@ package com.mhw.bootlaunch.restful;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mhw.bootlaunch.controller.ArticleRestController;
 import com.mhw.bootlaunch.model.Article;
-import com.mhw.bootlaunch.service.ArticleRestService;
+import com.mhw.bootlaunch.service.ArticleRestJDBCServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +33,7 @@ public class ArticleRestControllerTest3 {
     private MockMvc mockMvc;
 
     @MockBean
-    ArticleRestService articleRestService;
+    ArticleRestJDBCServiceImpl articleRestService;
 
     /*@Before
     public void setUp() {
@@ -56,7 +56,7 @@ public class ArticleRestControllerTest3 {
         Article articleObj = objectMapper.readValue(article,Article.class);
 
         //打桩
-        when(articleRestService.saveArticle(articleObj)).thenReturn("ok");
+        when(articleRestService.saveArticle(articleObj)).thenReturn(articleObj);
 
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.request(HttpMethod.POST, "/rest/article")
