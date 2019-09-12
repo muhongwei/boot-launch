@@ -1,4 +1,4 @@
-package com.mhw.bootlaunch.dao;
+package com.mhw.bootlaunch.jpa.testdb;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,9 @@
 package com.mhw.bootlaunch.service;
 
-import com.mhw.bootlaunch.dao.Article;
-import com.mhw.bootlaunch.dao.ArticleRepository;
+import com.mhw.bootlaunch.jpa.testdb.Article;
+import com.mhw.bootlaunch.jpa.testdb.ArticleRepository;
+import com.mhw.bootlaunch.jpa.testdb2.Message;
+import com.mhw.bootlaunch.jpa.testdb2.MessageRepository;
 import com.mhw.bootlaunch.model.ArticleVO;
 import com.mhw.bootlaunch.utils.DozerUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,8 @@ public class ArticleRestJpaServiceImpl implements ArticleRestService{
 
     @Resource
     private ArticleRepository articleRepository;
+    @Resource
+    private MessageRepository messageRepository;
 
     @Resource
     private Mapper dozerMapper;
@@ -27,7 +31,10 @@ public class ArticleRestJpaServiceImpl implements ArticleRestService{
 
         Article articlePO = dozerMapper.map(article,Article.class);
         articleRepository.save(articlePO);
-
+        Message message = new Message();
+        message.setName("kobe");
+        message.setContent("退役了");
+        messageRepository.save(message);
         return  article;
     }
 

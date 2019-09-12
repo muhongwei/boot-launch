@@ -1,7 +1,7 @@
 package com.mhw.bootlaunch.jpa;
 
-import com.mhw.bootlaunch.dao.Article;
-import com.mhw.bootlaunch.dao.ArticleRepository;
+import com.mhw.bootlaunch.jpa.testdb.Article;
+import com.mhw.bootlaunch.jpa.testdb.ArticleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
