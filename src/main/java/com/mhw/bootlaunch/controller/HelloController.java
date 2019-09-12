@@ -1,6 +1,6 @@
 package com.mhw.bootlaunch.controller;
 
-import com.mhw.bootlaunch.model.Article;
+import com.mhw.bootlaunch.model.ArticleVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     //private static final Logger log = LoggerFactory.getLogger(HelloController.class);
     @RequestMapping("/hello")
-    public Article hello(){
+    public ArticleVO hello(){
 //        Article article = new Article(1L, "mhw");
-        Article article1 = Article.builder().id(2L).author("mhw").build();
+        ArticleVO article1 = ArticleVO.builder().id(2L).author("mhw").build();
         log.info("测试一下" + article1);
         return article1;
     }

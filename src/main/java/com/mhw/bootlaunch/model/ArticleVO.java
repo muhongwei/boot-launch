@@ -1,6 +1,7 @@
 package com.mhw.bootlaunch.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +19,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @Data
-public class Article {
+public class ArticleVO {
+
+    @JsonIgnore
     private Long id;
     private String author;
     private String title;
