@@ -7,7 +7,6 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, author, content, create_time, title, createTime
+    id, author, content, create_time, title
   </sql>
   <select id="selectByExample" parameterType="com.mhw.bootlaunch.generator.testdb.ArticleExample" resultMap="BaseResultMap">
     select
@@ -110,9 +109,9 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mhw.bootlaunch.generator.testdb.Article" useGeneratedKeys="true">
     insert into article (author, content, create_time, 
-      title, createTime)
+      title)
     values (#{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{title,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+      #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mhw.bootlaunch.generator.testdb.Article" useGeneratedKeys="true">
     insert into article
@@ -129,9 +128,6 @@
       <if test="title != null">
         title,
       </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="author != null">
@@ -145,9 +141,6 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -175,9 +168,6 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.createtime != null">
-        createTime = #{record.createtime,jdbcType=TIMESTAMP},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -189,8 +179,7 @@
       author = #{record.author,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      title = #{record.title,jdbcType=VARCHAR},
-      createTime = #{record.createtime,jdbcType=TIMESTAMP}
+      title = #{record.title,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,9 +199,6 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -221,8 +207,7 @@
     set author = #{author,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      title = #{title,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=TIMESTAMP}
+      title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
